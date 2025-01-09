@@ -1,5 +1,17 @@
 services:
-  app:
-    image: go-crud-api
+  api:
+    image: go-crud-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
     ports:
       - "8000:8000"
+    environment:
+      - GO_ENV=production
+    networks:
+      - go-network
+
+networks:
+  go-network:
+    driver: bridge
