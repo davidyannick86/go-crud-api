@@ -126,6 +126,9 @@ func main() {
 	movies = getMockDatas()
 
 	// Route handlers / Endpoints
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Welcome to the Movies API : http://127.0.0.1:8000/movies")
+	})
 	r.HandleFunc("/movies", getMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
 	r.HandleFunc("/movies", createMovie).Methods("POST")
